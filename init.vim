@@ -26,6 +26,13 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:airline_theme = 'base16'
 
+" YouCompleteMe
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:UltiSnipsExpandTrigger = '<C-n>'
+let g:UltiSnipsJumpForwardTrigger = '<C-n>'
+let g:UltiSnipsJumpBackwardTrigger = '<C-p>'
+let g:EclimCompletionMethod = 'omnifunc'
+
 set mouse=a
 set fileformats=unix,dos,mac
 set termguicolors
@@ -77,6 +84,7 @@ Plug 'tomasr/molokai'
 Plug 'moll/vim-node'
 Plug 'othree/yajs.vim'
 Plug 'Valloric/YouCompleteMe'
+Plug 'ternjs/tern_for_vim'
 call plug#end()
 
 syntax on
