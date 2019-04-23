@@ -17,24 +17,16 @@ highlight link ALEErrorSign Tag
 highlight link ALEWarningSign StorageClass
 
 " airline
-let g:airline_theme = 'wombat'
 set laststatus=2
-let g:airline#extensions#branch#enabled = 1
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#wordcount#enabled = 0
-let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'y', 'z']]
-let g:airline_section_c = '%t'
-let g:airline_section_x = '%{&filetype}'
-let g:airline_section_z = '%3l:%2v %{airline#extensions#ale#get_warning()} %{airline#extensions#ale#get_error()}'
-let g:airline#extensions#ale#error_symbol = '? '
-let g:airline#extensions#ale#warning_symbol = '? '
-let g:airline#extensions#default#section_truncate_width = {}
-let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#whitespace#mixed_indent_algo = 1
+let g:airline_theme = 'base16'
 
 set mouse=a
 set fileformats=unix,dos,mac
 set termguicolors
-set fileencodings=ucs-bombs,utf-8,euc-jp,cp932
 set ambiwidth=double
 set noswapfile
 set hidden
@@ -64,7 +56,6 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>g :silent grep! -ilr <C-r><C-w> .<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>f :FZF<CR>
-imap <Leader>e <esc>
 nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
 
@@ -81,6 +72,9 @@ Plug 'junegunn/fzf'
 Plug 'rhysd/accelerated-jk'
 Plug 'Townk/vim-autoclose'
 Plug 'tomasr/molokai'
+Plug 'moll/vim-node'
+Plug 'othree/yajs.vim'
+Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
 syntax on
