@@ -85,6 +85,7 @@ Plug 'moll/vim-node'
 Plug 'othree/yajs.vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'ternjs/tern_for_vim'
+Plug 'vim-scripts/AutoComplPop'
 call plug#end()
 
 syntax on
