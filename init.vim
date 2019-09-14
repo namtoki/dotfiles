@@ -18,14 +18,6 @@ let g:ale_echo_msg_format = '[%linter%]%code: %%s'
 highlight link ALEErrorSign Tag
 highlight link ALEWarningSign StorageClass
 
-" airline
-set laststatus=2
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline#extensions#whitespace#mixed_indent_algo = 1
-let g:airline_theme = 'base16'
-
 " YouCompleteMe
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:UltiSnipsExpandTrigger = '<C-n>'
@@ -56,12 +48,34 @@ set incsearch
 set hlsearch
 "set noshowmode
 
-autocmd QuickFixCmdPost *grep* cwindow
+function! MyGoyo()
+    execute "Goyo 95%x95%"
+endfunction
+
+function! QuitVim()
+    execute "Limelight!"
+    execute "Goyo!"
+    execute "q"
+endfunction
+
+command! QuitVim call QuitVim()
+
+augroup autoconfig
+    autocmd!
+    au vimenter * call MyGoyo() | Limelight | set number
+    au vimresized * call MyGoyo()
+    au QuickFixCmdPost *grep* cwindow
+augroup END
+
+let g:comfortable_motion_interval = 2400.0 / 60
+let g:comfortable_motion_friction = 100.0
+let g:comfortable_motion_air_drag = 6.0
+
 nnoremap j gj
 nnoremap k gk
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :q<CR>
+nnoremap <Leader>q :QuitVim<CR>
 nnoremap <Leader>g :silent grep! -ilr <C-r><C-w> .<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>f :FZF<CR>
@@ -70,22 +84,28 @@ nmap k <Plug>(accelerated_jk_gk)
 
 call plug#begin('~/.config/nvim')
 Plug 'scrooloose/nerdtree'
-Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'nathanaelkane/vim-indent-guides'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'tpope/vim-fugitive'
 Plug 'w0rp/ale'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'ryanoasis/vim-devicons'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+"Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/fzf'
 Plug 'rhysd/accelerated-jk'
 Plug 'Townk/vim-autoclose'
 Plug 'tomasr/molokai'
 Plug 'moll/vim-node'
 Plug 'othree/yajs.vim'
-Plug 'Valloric/YouCompleteMe'
-Plug 'ternjs/tern_for_vim'
+"Plug 'Valloric/YouCompleteMe'
+"Plug 'ternjs/tern_for_vim'
 Plug 'vim-scripts/AutoComplPop'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/LimeLight.vim'
+Plug 'ervandew/supertab'
+Plug 'jacquesbh/vim-showmarks'
+Plug 'sheerun/vim-polyglot'
+Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
 
 syntax on
