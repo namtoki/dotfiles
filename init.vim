@@ -1,114 +1,159 @@
-
+filetype on
 filetype plugin indent off
-
 let mapleader = "\<Space>"
 
-" Python path
-let g:python_host_prog = system('(type pyenv &>/dev/null && echo -n "$(pyenv root)/versions/$(pyenv global | grep python2)/bin/python") || echo -n $(which python2)')
-let g:python3_host_prog = system('(type pyenv &>/dev/null && echo -n "$(pyenv root)/versions/$(pyenv global | grep python3)/bin/python") || echo -n $(which python3)')
+" Path
+" ====
+let g:python_host_prog = system('echo -n $(which python)')
+let g:python3_host_prog = system('echo -n $(which python3)')
 
-" lint
-let g:indent_guides_enable_on_vim_startup = 1
-let g:ale_lint_on_text_changed = 0
-let g:ale_sign_error = '!!'
-let g:ale_sign_warning = '--'
-let g:airline#extensions#ale#open_lnum_symbol = '('
-let g:airline#extensions#ale#close_lnum_symbol = ')'
-let g:ale_echo_msg_format = '[%linter%]%code: %%s'
-highlight link ALEErrorSign Tag
-highlight link ALEWarningSign StorageClass
-
-" YouCompleteMe
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:UltiSnipsExpandTrigger = '<C-n>'
-let g:UltiSnipsJumpForwardTrigger = '<C-n>'
-let g:UltiSnipsJumpBackwardTrigger = '<C-p>'
-let g:EclimCompletionMethod = 'omnifunc'
-
-set mouse=a
-set fileformats=unix,dos,mac
-set termguicolors
-set ambiwidth=double
-set noswapfile
-set hidden
-set clipboard+=unnamedplus
-set number
+" Appearance
+" ==========
+set noshowmode
+set ambiwidth=single
+set laststatus=2
 set list
 set listchars=tab:>-,trail:*,nbsp:+
-set smartindent
+set cursorcolumn
+set cursorline
+set norelativenumber
+set nowrap
+set number
+set showtabline=2
+set t_Co=256
 set visualbell
+
+" Status Line
+" ===========
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.maxlinenr = ''
+
+" Git
+" ===
+let g:gitgutter_override_sign_column_highlight=0
+highlight SignColumn ctermbg=black
+let g:gitgutter_sign_added='＋'
+let g:gitgutter_sign_modified='＋'
+let g:gitgutter_sign_removed='－'
+let g:gitgutter_sign_removed_first_line='－'
+let g:gitgutter_sign_modified_removed='＋'
+highlight GitGutterAdd ctermfg=008000 ctermbg=black
+highlight GitGutterChange ctermfg=008000 ctermbg=black
+highlight GitGutterDelete ctermfg=red ctermbg=black
+highlight GitGutterChangeDelete ctermfg=008000 ctermbg=black
+
+" Operability
+" ===========
+set backspace=indent,eol,start
+set hidden
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
+set smartindent
+set smarttab
+set mouse=a
+augroup operability
+    autocmd!
+    autocmd FileType c,cpp,java setl cindent
+augroup END
 set expandtab
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
-set smarttab
-set ignorecase
-set smartcase
-set showtabline=2
-set incsearch
-set hlsearch
-"set noshowmode
+set shiftround
+let g:comfortable_motion_interval=2400.0/60
+let g:comfortable_motion_friction=100.0
+let g:comfortable_motion_air_drag=6.0
 
-function! MyGoyo()
-    execute "Goyo 95%x95%"
-endfunction
+" Setting
+" =======
+set fileformats=unix,dos,mac
+set lazyredraw
+set re=1
+set clipboard^=unnamedplus
+set noswapfile
+set title
+set ttyfast
+set tags=.tags,./tags;
 
-function! QuitVim()
-    execute "Limelight!"
-    execute "Goyo!"
-    execute "q"
-endfunction
-
-command! QuitVim call QuitVim()
-
-augroup autoconfig
-    autocmd!
-    au vimenter * call MyGoyo() | Limelight | set number
-    au vimresized * call MyGoyo()
-    au QuickFixCmdPost *grep* cwindow
-augroup END
-
-let g:comfortable_motion_interval = 2400.0 / 60
-let g:comfortable_motion_friction = 100.0
-let g:comfortable_motion_air_drag = 6.0
-
-nnoremap j gj
-nnoremap k gk
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :QuitVim<CR>
-nnoremap <Leader>g :silent grep! -ilr <C-r><C-w> .<CR>
-nnoremap <Leader>n :NERDTreeToggle<CR>
-nnoremap <Leader>f :FZF<CR>
+" Mapping
+" =======
 nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
+nmap <ESC><ESC> :nohlsearch<CR>
+nmap <Leader>m :Search <C-r><C-w><CR>
+nmap <Leader>M :SearchReset<CR>
+nmap <Leader>t :!ctags -R<CR>
+nmap <Leader>c :copen<CR>
+nmap <Leader>q :q!<CR>
+nmap <Leader>w :w<CR>
+nmap <Leader>n :NERDTreeToggle<CR>
+nmap <Leader>f :FZF<CR>
+nmap <Leader>g :Ag <C-r><C-w> --path-to-ignore .ignore<CR>
+nmap <Leader>G :Ag <C-r>+ --path-to-ignore .ignore<CR>
 
+set updatetime=500
+augroup vimrc
+    autocmd!
+    au CursorHold * LspHover
+augroup END
+let g:neocomplcache_enable_at_startup=1
+set signcolumn=yes
+
+" VIM-LSP
+" =======
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
+
+" Plugins
+" =======
 call plug#begin('~/.config/nvim')
-Plug 'scrooloose/nerdtree'
-"Plug 'nathanaelkane/vim-indent-guides'
-Plug 'bronson/vim-trailing-whitespace'
-Plug 'tpope/vim-fugitive'
-Plug 'w0rp/ale'
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-"Plug 'ryanoasis/vim-devicons'
+" Operability
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'ryanolsonx/vim-lsp-python'
+Plug 'rking/ag.vim'
 Plug 'junegunn/fzf'
-Plug 'rhysd/accelerated-jk'
-Plug 'Townk/vim-autoclose'
-Plug 'tomasr/molokai'
-Plug 'moll/vim-node'
-Plug 'othree/yajs.vim'
-"Plug 'Valloric/YouCompleteMe'
-"Plug 'ternjs/tern_for_vim'
-Plug 'vim-scripts/AutoComplPop'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/LimeLight.vim'
-Plug 'ervandew/supertab'
-Plug 'jacquesbh/vim-showmarks'
-Plug 'sheerun/vim-polyglot'
 Plug 'yuttie/comfortable-motion.vim'
+Plug 'jacquesbh/vim-showmarks'
+Plug 'Townk/vim-autoclose'
+Plug 'rhysd/accelerated-jk'
+" Appearance
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'tomasr/molokai'
+Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'vim-scripts/MultipleSearch'
+Plug 'Shougo/neocomplcache'
+" Git
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+" HTML/CSS
+Plug 'ap/vim-css-color'
+" Other
+Plug 'wordijp/NeoDebug'
 call plug#end()
 
 syntax on
 colorscheme molokai
-
 filetype plugin indent on
