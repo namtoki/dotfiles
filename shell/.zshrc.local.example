@@ -1,0 +1,28 @@
+# ============================================
+# Machine-specific and Secret Settings
+# ============================================
+# Copy this file to ~/.zshrc.local and edit as needed.
+# This file is NOT tracked by git.
+
+# API Keys
+# export YOUTUBE_API_KEY="your-api-key-here"
+# export OPENAI_API_KEY="your-api-key-here"
+
+# NVM (Node Version Manager)
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# Java
+# export JAVA_HOME="/path/to/java/home"
+# export PATH="$JAVA_HOME/bin:$PATH"
+
+# Flutter / Dart
+# export PATH="$PATH":"$HOME/.pub-cache/bin"
+# alias flutter="fvm flutter"
+
+# Dart CLI Completion
+# [[ -f ~/.dart-cli-completion/zsh-config.zsh ]] && . ~/.dart-cli-completion/zsh-config.zsh || true
+
+# Bun (if installed via local method)
+# . "$HOME/.local/bin/env"

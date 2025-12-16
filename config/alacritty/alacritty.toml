@@ -1,0 +1,11 @@
+[window]
+decorations = "none"
+opacity = 0.70
+startup_mode = "Maximized"
+
+[font]
+normal = { family = "FiraCode Nerd Font" }
+size = 12
+
+[keyboard]
+bindings = [{ key = "Space", mods = "Control", chars = "\u0000" }]

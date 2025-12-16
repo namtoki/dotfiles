@@ -1,0 +1,25 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/main/.schema/devbox.schema.json",
+  "packages": [
+    "git@latest",
+    "gh@latest",
+    "ghq@latest",
+    "neovim@latest",
+    "tmux@latest",
+    "starship@latest",
+    "ripgrep@latest",
+    "fd@latest",
+    "fzf@latest",
+    "eza@latest",
+    "bat@latest",
+    "delta@latest",
+    "jq@latest",
+    "lazygit@latest",
+    "zoxide@latest"
+  ],
+  "shell": {
+    "init_hook": [
+      "echo 'Devbox global packages loaded!'"
+    ]
+  }
+}
