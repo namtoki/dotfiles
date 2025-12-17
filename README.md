@@ -1,10 +1,19 @@
 # dotfiles
 
-Devbox を使用した macOS 開発環境の dotfiles 管理
+macOS development environment managed with Devbox
+
+## Prerequisites
+
+This configuration assumes the following tool stack:
+
+- **ghq** - Repository management (`~/ghq/github.com/...` structure)
+- **Alacritty** - Terminal emulator
+- **tmux** - Terminal multiplexer
+- **Neovim** - Text editor (LazyVim based)
 
 ## Quick Start
 
-新しい Mac で以下のコマンドを実行するだけで環境構築が完了します:
+Run the following command on a new Mac to complete the setup:
 
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/namtoki/dotfiles/main/bootstrap.sh)"
@@ -13,27 +22,27 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/namtoki/dotfiles/main/bo
 ## Manual Setup
 
 ```bash
-# 1. Devbox をインストール
+# 1. Install Devbox
 curl -fsSL https://get.jetify.com/devbox | bash
 
-# 2. dotfiles をクローン
+# 2. Clone dotfiles
 mkdir -p ~/ghq/github.com/namtoki
 git clone https://github.com/namtoki/dotfiles.git ~/ghq/github.com/namtoki/dotfiles
 
-# 3. セットアップスクリプトを実行
+# 3. Run setup script
 cd ~/ghq/github.com/namtoki/dotfiles
 ./install.sh
 
-# 4. Devbox Global パッケージをインストール
+# 4. Install Devbox Global packages
 devbox global install
 
-# 5. シェルを再起動
+# 5. Restart shell
 exec $SHELL -l
 ```
 
 ## Packages (Devbox Global)
 
-以下のツールが `devbox global` で管理されています:
+The following tools are managed via `devbox global`:
 
 | Package | Description |
 |---------|-------------|
@@ -84,42 +93,42 @@ dotfiles/
 
 ## Secrets Management
 
-機密情報（API キー等）は `~/.zshrc.local` で管理します:
+Sensitive information (API keys, etc.) is managed in `~/.zshrc.local`:
 
 ```bash
-# テンプレートをコピー
+# Copy template
 cp ~/ghq/github.com/namtoki/dotfiles/shell/.zshrc.local.example ~/.zshrc.local
 
-# 編集して機密情報を追加
+# Edit and add secrets
 vim ~/.zshrc.local
 ```
 
-`.zshrc.local` は `.gitignore` に含まれており、Git にはコミットされません。
+`.zshrc.local` is included in `.gitignore` and will not be committed to Git.
 
 ## Customization
 
-### パッケージの追加
+### Adding Packages
 
 ```bash
-# Devbox でパッケージを追加
+# Add package with Devbox
 devbox global add <package>
 
-# devbox.json を更新してコミット
+# Update and commit devbox.json
 cd ~/ghq/github.com/namtoki/dotfiles
 git add devbox.json
 git commit -m "Add package: <package>"
 git push
 ```
 
-### 設定の更新
+### Updating Configuration
 
-dotfiles 内のファイルを編集するとシンボリックリンク経由で即座に反映されます。
+Changes to files in dotfiles are immediately reflected via symlinks.
 
 ```bash
-# 例: Neovim の設定を編集
+# Example: Edit Neovim config
 nvim ~/ghq/github.com/namtoki/dotfiles/config/nvim/lua/config/options.lua
 
-# 変更をコミット
+# Commit changes
 cd ~/ghq/github.com/namtoki/dotfiles
 git add -A && git commit -m "Update nvim config"
 git push
@@ -128,34 +137,34 @@ git push
 ## Sync Across Machines
 
 ```bash
-# 他のマシンで更新した設定を取り込む
+# Pull updates from other machines
 cd ~/ghq/github.com/namtoki/dotfiles
 git pull
 
-# Devbox パッケージを再同期
+# Re-sync Devbox packages
 devbox global install
 ```
 
 ## Troubleshooting
 
-### Devbox コマンドが見つからない
+### Devbox command not found
 
 ```bash
-# シェルを再起動
+# Restart shell
 exec $SHELL -l
 
-# または手動で読み込み
+# Or manually load
 eval "$(devbox global shellenv --init-hook)"
 ```
 
-### tmux プラグインがインストールされない
+### tmux plugins not installed
 
-tmux を起動後、`prefix + I` を押してプラグインをインストール。
+After starting tmux, press `prefix + I` to install plugins.
 
-### Neovim プラグインエラー
+### Neovim plugin errors
 
-Neovim を起動すると LazyVim が自動的にプラグインをインストールします。
-エラーが出る場合は `:Lazy sync` を実行。
+LazyVim automatically installs plugins when Neovim starts.
+If errors occur, run `:Lazy sync`.
 
 ## Requirements
 
