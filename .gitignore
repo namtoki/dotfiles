@@ -26,3 +26,6 @@ credentials.json
 
 # Backup
 .dotfiles_backup/
+
+# mcp
+.serena/
