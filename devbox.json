@@ -1,6 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/main/.schema/devbox.schema.json",
   "packages": [
+    "bash@latest",
     "git@latest",
     "gh@latest",
     "ghq@latest",
@@ -15,7 +16,8 @@
     "delta@latest",
     "jq@latest",
     "lazygit@latest",
-    "zoxide@latest"
+    "zoxide@latest",
+    "claude-code@latest"
   ],
   "shell": {
     "init_hook": [

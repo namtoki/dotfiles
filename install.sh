@@ -75,6 +75,7 @@ info "Syncing Devbox global configuration..."
 DEVBOX_GLOBAL_DIR="$HOME/.local/share/devbox/global/default"
 mkdir -p "$DEVBOX_GLOBAL_DIR"
 create_symlink "$DOTFILES_DIR/devbox.json" "$DEVBOX_GLOBAL_DIR/devbox.json"
+create_symlink "$DOTFILES_DIR/devbox.lock" "$DEVBOX_GLOBAL_DIR/devbox.lock"
 
 # ============================================
 # Done
