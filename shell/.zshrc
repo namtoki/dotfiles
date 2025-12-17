@@ -16,6 +16,12 @@ autoload -Uz compinit
 compinit
 
 # ============================================
+# Key Bindings
+# ============================================
+bindkey '^P' up-line-or-history      # Ctrl-p で履歴を遡る
+bindkey '^N' down-line-or-history    # Ctrl-n で履歴を進む
+
+# ============================================
 # Zoxide (smart cd)
 # ============================================
 eval "$(zoxide init zsh)"
