@@ -48,6 +48,8 @@ create_symlink "$DOTFILES_DIR/shell/.zshrc" "$HOME/.zshrc"
 
 info "Installing git config..."
 create_symlink "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
+create_symlink "$DOTFILES_DIR/git/.gitconfig.github" "$HOME/.gitconfig.github"
+create_symlink "$DOTFILES_DIR/git/.gitconfig.gitlab-su" "$HOME/.gitconfig.gitlab-su"
 
 # ============================================
 # 2. XDG Config directory (~/.config)
