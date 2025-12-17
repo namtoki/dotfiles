@@ -4,6 +4,11 @@
 eval "$(devbox global shellenv --init-hook)"
 
 # ============================================
+# Zsh Autosuggestions
+# ============================================
+source "$DEVBOX_PACKAGES_DIR/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
+# ============================================
 # Starship Prompt
 # ============================================
 eval "$(starship init zsh)"

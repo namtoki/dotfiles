@@ -17,7 +17,8 @@
     "jq@latest",
     "lazygit@latest",
     "zoxide@latest",
-    "claude-code@latest"
+    "claude-code@latest",
+    "zsh-autosuggestions@latest"
   ],
   "shell": {
     "init_hook": [
