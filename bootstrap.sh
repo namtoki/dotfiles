@@ -85,6 +85,19 @@ else
 fi
 
 # ============================================
+# 7. Install Nerd Fonts (FiraCode)
+# ============================================
+if [[ "$(uname)" == "Darwin" ]]; then
+    if ! brew list --cask font-fira-code-nerd-font &>/dev/null; then
+        info "Installing FiraCode Nerd Font..."
+        brew install --cask font-fira-code-nerd-font
+        success "FiraCode Nerd Font installed"
+    else
+        success "FiraCode Nerd Font already installed"
+    fi
+fi
+
+# ============================================
 # Done
 # ============================================
 echo ""
