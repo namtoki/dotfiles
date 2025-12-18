@@ -69,7 +69,16 @@ create_symlink "$DOTFILES_DIR/config/alacritty" "$HOME/.config/alacritty"
 create_symlink "$DOTFILES_DIR/config/starship.toml" "$HOME/.config/starship.toml"
 
 # ============================================
-# 3. Devbox Global configuration
+# 3. Claude Code configuration (~/.claude)
+# ============================================
+info "Installing Claude Code config..."
+mkdir -p "$HOME/.claude"
+create_symlink "$DOTFILES_DIR/claude/settings.json" "$HOME/.claude/settings.json"
+create_symlink "$DOTFILES_DIR/claude/statusline.js" "$HOME/.claude/statusline.js"
+chmod +x "$DOTFILES_DIR/claude/statusline.js"
+
+# ============================================
+# 4. Devbox Global configuration
 # ============================================
 info "Syncing Devbox global configuration..."
 DEVBOX_GLOBAL_DIR="$HOME/.local/share/devbox/global/default"

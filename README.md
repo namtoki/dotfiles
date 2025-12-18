@@ -10,6 +10,7 @@ This configuration assumes the following tool stack:
 - **Alacritty** - Terminal emulator
 - **tmux** - Terminal multiplexer
 - **Neovim** - Text editor (LazyVim based)
+- **Claude Code** - AI coding assistant CLI
 
 ## Quick Start
 
