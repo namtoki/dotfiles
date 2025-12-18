@@ -18,7 +18,8 @@
     "lazygit@latest",
     "zoxide@latest",
     "claude-code@latest",
-    "zsh-autosuggestions@latest"
+    "zsh-autosuggestions@latest",
+    "nodejs@22"
   ],
   "shell": {
     "init_hook": [
