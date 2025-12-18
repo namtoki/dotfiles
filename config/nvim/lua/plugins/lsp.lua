@@ -5,14 +5,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
-      setup = {
-        clangd = function(_, opts)
-          opts.on_attach = function(client, bufnr)
-            client.server_capabilities.semanticTokensProvider = nil
-          end
-          return false
-        end,
-      },
       autoformat = false,
       servers = {
         clangd = {
@@ -27,6 +19,12 @@ return {
         },
       },
       setup = {
+        clangd = function(_, opts)
+          opts.on_attach = function(client, bufnr)
+            client.server_capabilities.semanticTokensProvider = nil
+          end
+          return false
+        end,
         sourcekit = function(_, opts)
           opts.on_attach = function(client, bufnr)
             client.server_capabilities.documentFormattingProvider = false
