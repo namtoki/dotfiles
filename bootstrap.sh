@@ -21,9 +21,10 @@ info "Install location: $DOTFILES_DIR"
 echo ""
 
 # ============================================
-# 1. Xcode Command Line Tools (macOS)
+# 1. OS-specific prerequisites
 # ============================================
 if [[ "$(uname)" == "Darwin" ]]; then
+    # macOS: Xcode Command Line Tools
     if ! xcode-select -p &>/dev/null; then
         info "Installing Xcode Command Line Tools..."
         xcode-select --install
@@ -31,6 +32,37 @@ if [[ "$(uname)" == "Darwin" ]]; then
         exit 0
     else
         success "Xcode Command Line Tools already installed"
+    fi
+elif [[ "$(uname)" == "Linux" ]]; then
+    # Linux: Install zsh and git via apt
+    if command -v apt &>/dev/null; then
+        PACKAGES_TO_INSTALL=()
+        if ! command -v zsh &>/dev/null; then
+            PACKAGES_TO_INSTALL+=("zsh")
+        fi
+        if ! command -v git &>/dev/null; then
+            PACKAGES_TO_INSTALL+=("git")
+        fi
+        if ! command -v curl &>/dev/null; then
+            PACKAGES_TO_INSTALL+=("curl")
+        fi
+        if ! command -v unzip &>/dev/null; then
+            PACKAGES_TO_INSTALL+=("unzip")
+        fi
+        if ! command -v fc-cache &>/dev/null; then
+            PACKAGES_TO_INSTALL+=("fontconfig")
+        fi
+
+        if [[ ${#PACKAGES_TO_INSTALL[@]} -gt 0 ]]; then
+            info "Installing prerequisites: ${PACKAGES_TO_INSTALL[*]}..."
+            sudo apt update
+            sudo apt install -y "${PACKAGES_TO_INSTALL[@]}"
+            success "Prerequisites installed"
+        else
+            success "Prerequisites already installed (zsh, git, curl)"
+        fi
+    else
+        error "apt not found. Please install zsh, git, and curl manually."
     fi
 fi
 
@@ -46,7 +78,20 @@ else
 fi
 
 # ============================================
-# 3. Clone dotfiles repository
+# 3. Set zsh as default shell (Linux only)
+# ============================================
+if [[ "$(uname)" == "Linux" ]]; then
+    if [[ "$SHELL" != *"zsh"* ]]; then
+        info "Setting zsh as default shell..."
+        chsh -s "$(which zsh)"
+        success "Default shell changed to zsh (restart terminal to take effect)"
+    else
+        success "zsh is already the default shell"
+    fi
+fi
+
+# ============================================
+# 4. Clone dotfiles repository
 # ============================================
 if [[ ! -d "$DOTFILES_DIR" ]]; then
     info "Cloning dotfiles repository..."
@@ -60,20 +105,20 @@ else
 fi
 
 # ============================================
-# 4. Run install script (create symlinks)
+# 5. Run install script (create symlinks)
 # ============================================
 info "Running install script..."
 bash "$DOTFILES_DIR/install.sh"
 
 # ============================================
-# 5. Install Devbox Global packages
+# 6. Install Devbox Global packages
 # ============================================
 info "Installing Devbox global packages..."
 devbox global install
 success "Devbox global packages installed"
 
 # ============================================
-# 6. Install tmux plugin manager (TPM)
+# 7. Install tmux plugin manager (TPM)
 # ============================================
 TPM_DIR="$HOME/.config/tmux/plugins/tpm"
 if [[ ! -d "$TPM_DIR" ]]; then
@@ -85,12 +130,27 @@ else
 fi
 
 # ============================================
-# 7. Install Nerd Fonts (FiraCode)
+# 8. Install Nerd Fonts (FiraCode)
 # ============================================
 if [[ "$(uname)" == "Darwin" ]]; then
     if ! brew list --cask font-fira-code-nerd-font &>/dev/null; then
         info "Installing FiraCode Nerd Font..."
         brew install --cask font-fira-code-nerd-font
+        success "FiraCode Nerd Font installed"
+    else
+        success "FiraCode Nerd Font already installed"
+    fi
+elif [[ "$(uname)" == "Linux" ]]; then
+    FONT_DIR="$HOME/.local/share/fonts"
+    if [[ ! -f "$FONT_DIR/FiraCodeNerdFont-Regular.ttf" ]]; then
+        info "Installing FiraCode Nerd Font..."
+        mkdir -p "$FONT_DIR"
+        FONT_VERSION="v3.3.0"
+        curl -fLo "/tmp/FiraCode.zip" \
+            "https://github.com/ryanoasis/nerd-fonts/releases/download/${FONT_VERSION}/FiraCode.zip"
+        unzip -o /tmp/FiraCode.zip -d "$FONT_DIR"
+        rm /tmp/FiraCode.zip
+        fc-cache -fv
         success "FiraCode Nerd Font installed"
     else
         success "FiraCode Nerd Font already installed"
