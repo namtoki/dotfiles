@@ -91,7 +91,21 @@ dotfiles/
     └── starship.toml
 ```
 
-## Secrets Management
+## Post-Setup Configuration
+
+### Git User Settings
+
+After setup, edit the Git config files with your actual name and email:
+
+```bash
+# GitHub (personal)
+vim ~/.gitconfig.github
+
+# GitLab Sound United (work) - if applicable
+vim ~/.gitconfig.gitlab-su
+```
+
+### Secrets Management
 
 Sensitive information (API keys, etc.) is managed in `~/.zshrc.local`:
 

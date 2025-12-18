@@ -1,4 +1,5 @@
 # GitHub (personal) user settings
+# IMPORTANT: Edit these values with your actual name and email
 [user]
-    name = namtoki
-    email = toshi.turner@gmail.com
+    name = your-github-username
+    email = your-email@example.com

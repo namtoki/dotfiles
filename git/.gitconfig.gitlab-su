@@ -1,4 +1,5 @@
 # GitLab Sound United (work) user settings
+# IMPORTANT: Edit these values with your actual name and email
 [user]
-    name = Toshiyuki Tanamura
-    email = toshiyuki.tanamura@soundunited.com
+    name = Your Full Name
+    email = your-email@soundunited.com
