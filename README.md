@@ -6,15 +6,28 @@ macOS development environment managed with Devbox
 
 This configuration assumes the following tool stack:
 
+- **zsh** - Default shell (macOS default since Catalina)
 - **ghq** - Repository management (`~/ghq/github.com/...` structure)
 - **Alacritty** - Terminal emulator
 - **tmux** - Terminal multiplexer
 - **Neovim** - Text editor (LazyVim based)
 - **Claude Code** - AI coding assistant CLI
 
+> **Note:** This dotfiles configuration is designed for zsh. Make sure zsh is your default shell before proceeding.
+
 ## Quick Start
 
-Run the following command on a new Mac to complete the setup:
+### 1. Install Alacritty
+
+First, install Alacritty terminal emulator:
+
+```bash
+brew install --cask alacritty
+```
+
+### 2. Run Bootstrap Script
+
+Open Alacritty and run the following command to complete the setup:
 
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/namtoki/dotfiles/main/bootstrap.sh)"
