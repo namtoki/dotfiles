@@ -1,0 +1,10 @@
+# Font
+font-family = FiraCode Nerd Font
+font-size = 12
+
+# Window
+window-decoration = none
+background-opacity = 0.80
+
+# Keybindings
+keybind = ctrl+space=text:\x00

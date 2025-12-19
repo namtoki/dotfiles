@@ -17,6 +17,7 @@
     "jq@latest",
     "lazygit@latest",
     "zoxide@latest",
+    "yazi@latest",
     "claude-code@latest",
     "zsh-autosuggestions@latest",
     "nodejs@22"

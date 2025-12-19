@@ -8,7 +8,6 @@ This configuration assumes the following tool stack:
 
 - **zsh** - Default shell (macOS default since Catalina)
 - **ghq** - Repository management (`~/ghq/github.com/...` structure)
-- **Alacritty** - Terminal emulator
 - **tmux** - Terminal multiplexer
 - **Neovim** - Text editor (LazyVim based)
 - **Claude Code** - AI coding assistant CLI
@@ -17,17 +16,21 @@ This configuration assumes the following tool stack:
 
 ## Quick Start
 
-### 1. Install Alacritty
+### 1. Install Terminal
 
-First, install Alacritty terminal emulator:
+Install a terminal emulator. **Ghostty** or **Alacritty** is recommended because this repository includes pre-configured config files.
 
 ```bash
+# Ghostty (recommended)
+brew install --cask ghostty
+
+# Or Alacritty
 brew install --cask alacritty
 ```
 
 ### 2. Run Bootstrap Script
 
-Open Alacritty and run the following command to complete the setup:
+Open your terminal and run the following command to complete the setup:
 
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/namtoki/dotfiles/main/bootstrap.sh)"

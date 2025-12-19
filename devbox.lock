@@ -1082,6 +1082,54 @@
         }
       }
     },
+    "yazi@latest": {
+      "last_modified": "2025-11-23T21:50:36Z",
+      "resolved": "github:NixOS/nixpkgs/ee09932cedcef15aaf476f9343d1dea2cb77e261#yazi",
+      "source": "devbox-search",
+      "version": "25.5.31",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/ixk604wfxvcliv66f1rnsv1mjwn72syr-yazi-25.5.31",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/ixk604wfxvcliv66f1rnsv1mjwn72syr-yazi-25.5.31"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/7wvnq08jqsk351qm66dbqnndrm7mpdsb-yazi-25.5.31",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/7wvnq08jqsk351qm66dbqnndrm7mpdsb-yazi-25.5.31"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/hvhq49yypyxp0plfwj08sybfqzc63fn9-yazi-25.5.31",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/hvhq49yypyxp0plfwj08sybfqzc63fn9-yazi-25.5.31"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/5c553m292m3yyqp8hpfw5zfg8fl3ifj8-yazi-25.5.31",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/5c553m292m3yyqp8hpfw5zfg8fl3ifj8-yazi-25.5.31"
+        }
+      }
+    },
     "zoxide@latest": {
       "last_modified": "2025-11-23T21:50:36Z",
       "resolved": "github:NixOS/nixpkgs/ee09932cedcef15aaf476f9343d1dea2cb77e261#zoxide",

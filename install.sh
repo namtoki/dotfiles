@@ -65,8 +65,14 @@ create_symlink "$DOTFILES_DIR/config/tmux" "$HOME/.config/tmux"
 # Alacritty
 create_symlink "$DOTFILES_DIR/config/alacritty" "$HOME/.config/alacritty"
 
+# Ghostty
+create_symlink "$DOTFILES_DIR/config/ghostty" "$HOME/.config/ghostty"
+
 # Starship
 create_symlink "$DOTFILES_DIR/config/starship.toml" "$HOME/.config/starship.toml"
+
+# Yazi
+create_symlink "$DOTFILES_DIR/config/yazi" "$HOME/.config/yazi"
 
 # ============================================
 # 3. Claude Code configuration (~/.claude)
