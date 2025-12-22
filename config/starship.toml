@@ -6,6 +6,7 @@ command_timeout = 1000
 
 # Format
 format = """
+$env_var\
 $username\
 $hostname\
 $directory\
@@ -69,3 +70,8 @@ style = "bold red"
 [cmd_duration]
 min_time = 2000
 format = "took [$duration](bold yellow) "
+
+[env_var.DEVBOX_SHELL_ENABLED]
+symbol = "📦"
+format = "[$symbol devbox]($style) "
+style = "bold blue"
