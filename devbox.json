@@ -20,7 +20,8 @@
     "yazi@latest",
     "claude-code@latest",
     "zsh-autosuggestions@latest",
-    "nodejs@22"
+    "nodejs@22",
+    "uv@latest"
   ],
   "shell": {
     "init_hook": [
