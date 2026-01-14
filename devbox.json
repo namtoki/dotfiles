@@ -22,8 +22,7 @@
     "colima@latest",
     "zsh-autosuggestions@latest",
     "nodejs@22",
-    "uv@latest",
-    "tailscale@latest"
+    "uv@latest"
   ],
   "shell": {
     "init_hook": [
