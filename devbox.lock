@@ -221,6 +221,54 @@
         }
       }
     },
+    "colima@latest": {
+      "last_modified": "2025-12-31T03:27:36Z",
+      "resolved": "github:NixOS/nixpkgs/f665af0cdb70ed27e1bd8f9fdfecaf451260fc55#colima",
+      "source": "devbox-search",
+      "version": "0.9.1",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/l66db3izwk3ahfzwwa316w7nl5wy0pxn-colima-0.9.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/l66db3izwk3ahfzwwa316w7nl5wy0pxn-colima-0.9.1"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/k9rgs0xm6jkcn37g2834qqa1sjjx2dq7-colima-0.9.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/k9rgs0xm6jkcn37g2834qqa1sjjx2dq7-colima-0.9.1"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/h5z86cc73r8wn93g57haf581lpi87fzg-colima-0.9.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/h5z86cc73r8wn93g57haf581lpi87fzg-colima-0.9.1"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/45whfhk3kdbh18x3m2c95mm73i9yrj7f-colima-0.9.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/45whfhk3kdbh18x3m2c95mm73i9yrj7f-colima-0.9.1"
+        }
+      }
+    },
     "delta@latest": {
       "last_modified": "2025-11-25T14:41:04Z",
       "resolved": "github:NixOS/nixpkgs/dc205f7b4fdb04c8b7877b43edb7b73be7730081#delta",
@@ -1011,6 +1059,70 @@
             }
           ],
           "store_path": "/nix/store/lfw8yb2nhj04fcfb7lc5zl6mh6m6n5l1-starship-1.24.1"
+        }
+      }
+    },
+    "tailscale@latest": {
+      "last_modified": "2025-12-31T03:27:36Z",
+      "resolved": "github:NixOS/nixpkgs/f665af0cdb70ed27e1bd8f9fdfecaf451260fc55#tailscale",
+      "source": "devbox-search",
+      "version": "1.92.3",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/jrpsi1778i8yyx5mchgz1pplxlmv450c-tailscale-1.92.3",
+              "default": true
+            },
+            {
+              "name": "derper",
+              "path": "/nix/store/ncqp21p16zpw5z70n4vjkdf9xn0rnhg0-tailscale-1.92.3-derper"
+            }
+          ],
+          "store_path": "/nix/store/jrpsi1778i8yyx5mchgz1pplxlmv450c-tailscale-1.92.3"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/4i2w6jicfa1cidva9lsz3qjijaan3c9p-tailscale-1.92.3",
+              "default": true
+            },
+            {
+              "name": "derper",
+              "path": "/nix/store/03gpd08p409kfiam202wb2gfkwcf1php-tailscale-1.92.3-derper"
+            }
+          ],
+          "store_path": "/nix/store/4i2w6jicfa1cidva9lsz3qjijaan3c9p-tailscale-1.92.3"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/l6xssf4pg4g7pq031izm84mj99zvjl8c-tailscale-1.92.3",
+              "default": true
+            },
+            {
+              "name": "derper",
+              "path": "/nix/store/6fb63wzqa5sxgs7k27jv81c7i3nwl0sx-tailscale-1.92.3-derper"
+            }
+          ],
+          "store_path": "/nix/store/l6xssf4pg4g7pq031izm84mj99zvjl8c-tailscale-1.92.3"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/lha7hf8dcks3zg5fg0279g65kb2j19bw-tailscale-1.92.3",
+              "default": true
+            },
+            {
+              "name": "derper",
+              "path": "/nix/store/vwf3vzfll0iidjps4gapcc6vs7sw8nwj-tailscale-1.92.3-derper"
+            }
+          ],
+          "store_path": "/nix/store/lha7hf8dcks3zg5fg0279g65kb2j19bw-tailscale-1.92.3"
         }
       }
     },
