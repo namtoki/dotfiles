@@ -77,9 +77,9 @@ bindkey -s '^g' 'ghq-fzf\n'
 # ============================================
 if [[ -z "${TMUX}" ]]; then
     if [[ -n "${SSH_CLIENT}" ]]; then
-        # SSH 接続時: 既存セッションがあれば新しいウィンドウで接続
+        # SSH 接続時: グループセッションで独立した表示
         if tmux has-session -t main 2>/dev/null; then
-            tmux attach-session -t main \; new-window
+            tmux new-session -t main
         else
             tmux new-session -s main
         fi
