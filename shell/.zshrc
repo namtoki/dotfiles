@@ -76,7 +76,17 @@ bindkey -s '^g' 'ghq-fzf\n'
 # TMUX Auto Start
 # ============================================
 if [[ -z "${TMUX}" ]]; then
-    tmux new-session -A -s main
+    if [[ -n "${SSH_CLIENT}" ]]; then
+        # SSH 接続時: 既存セッションがあれば新しいウィンドウで接続
+        if tmux has-session -t main 2>/dev/null; then
+            tmux attach-session -t main \; new-window
+        else
+            tmux new-session -s main
+        fi
+    else
+        # ローカル: 通常の接続
+        tmux new-session -A -s main
+    fi
 fi
 
 # ============================================
