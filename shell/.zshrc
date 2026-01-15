@@ -77,12 +77,8 @@ bindkey -s '^g' 'ghq-fzf\n'
 # ============================================
 if [[ -z "${TMUX}" ]]; then
     if [[ -n "${SSH_CLIENT}" ]]; then
-        # SSH 接続時: グループセッションで独立した表示
-        if tmux has-session -t main 2>/dev/null; then
-            tmux new-session -t main
-        else
-            tmux new-session -s main
-        fi
+        # SSH 接続時: 各接続で独立したセッション
+        tmux new-session -s "ssh-$$"
     else
         # ローカル: 通常の接続
         tmux new-session -A -s main
