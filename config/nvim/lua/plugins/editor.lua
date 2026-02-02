@@ -1,4 +1,16 @@
 return {
+  -- Disable statuscolumn folds click to allow DAP breakpoint clicks
+  {
+    "folke/snacks.nvim",
+    opts = {
+      statuscolumn = {
+        folds = {
+          open = false,
+          git_hl = false,
+        },
+      },
+    },
+  },
   {
     "norcalli/nvim-colorizer.lua",
   },
