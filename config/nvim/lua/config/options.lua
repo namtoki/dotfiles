@@ -51,3 +51,6 @@ vim.opt.swapfile = false
 vim.opt.clipboard = "unnamedplus"
 vim.opt.wildmenu = true
 vim.opt.hidden = true
+
+-- Disable foldcolumn to allow DAP breakpoint clicks
+vim.opt.foldcolumn = "0"
