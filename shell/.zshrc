@@ -73,6 +73,16 @@ function ghq-fzf() {
 bindkey -s '^g' 'ghq-fzf\n'
 
 # ============================================
+# Claude
+# ============================================
+# you have to define `export AWS_PROFILE=` in zshrc.local
+# you have to define `export AWS_REGION=` in zshrc.local
+export CLAUDE_CODE_USE_BEDROCK=1
+export ANTHROPIC_DEFAULT_OPUS_MODEL='global.anthropic.claude-opus-4-5-20251101-v1:0'
+export ANTHROPIC_DEFAULT_SONNET_MODEL='global.anthropic.claude-sonnet-4-5-20250929-v1:0'
+export ANTHROPIC_DEFAULT_HAIKU_MODEL='global.anthropic.claude-haiku-4-5-20251001-v1:0'
+
+# ============================================
 # TMUX Auto Start
 # ============================================
 if [[ -z "${TMUX}" ]]; then
