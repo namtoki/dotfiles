@@ -2,9 +2,6 @@
 font-family = FiraCode Nerd Font
 font-size = 12
 
-# Japanese font (explicitly set to BIZ UDGothic)
-font-family-codepoints = U+3000-303F,U+3040-309F,U+30A0-30FF,U+4E00-9FFF,U+F900-FAFF,U+FF65-FF9F=BIZ UDGothic
-
 # Window
 window-decoration = none
 background-opacity = 0.80
