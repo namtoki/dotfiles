@@ -80,6 +80,7 @@ create_symlink "$DOTFILES_DIR/config/yazi" "$HOME/.config/yazi"
 info "Installing Claude Code config..."
 mkdir -p "$HOME/.claude"
 create_symlink "$DOTFILES_DIR/claude/settings.json" "$HOME/.claude/settings.json"
+create_symlink "$DOTFILES_DIR/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
 create_symlink "$DOTFILES_DIR/claude/statusline.js" "$HOME/.claude/statusline.js"
 chmod +x "$DOTFILES_DIR/claude/statusline.js"
 
