@@ -94,6 +94,33 @@ create_symlink "$DOTFILES_DIR/devbox.json" "$DEVBOX_GLOBAL_DIR/devbox.json"
 create_symlink "$DOTFILES_DIR/devbox.lock" "$DEVBOX_GLOBAL_DIR/devbox.lock"
 
 # ============================================
+# 5. CLI installations (without devbox)
+# ============================================
+info "Installing CLI tools..."
+
+# Claude Code
+if command -v claude &>/dev/null; then
+    success "claude already installed, skipping"
+else
+    info "Installing Claude Code..."
+    curl -fsSL https://claude.ai/install.sh | bash
+    success "Claude Code installed"
+fi
+
+# Colima
+if command -v colima &>/dev/null; then
+    success "colima already installed, skipping"
+else
+    if command -v brew &>/dev/null; then
+        info "Installing Colima..."
+        brew install colima
+        success "Colima installed"
+    else
+        warn "Homebrew not found — skipping Colima install"
+    fi
+fi
+
+# ============================================
 # Done
 # ============================================
 echo ""
@@ -106,3 +133,4 @@ info "Next steps:"
 echo "  1. Run 'devbox global install' to install packages"
 echo "  2. Restart your shell or run: source ~/.zshrc"
 echo "  3. Copy shell/.zshrc.local.example to ~/.zshrc.local and add your secrets"
+echo "  4. Start Colima with: colima start"
