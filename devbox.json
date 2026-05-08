@@ -18,7 +18,6 @@
     "lazygit@latest",
     "zoxide@latest",
     "yazi@latest",
-    "claude-code@latest",
     "colima@latest",
     "zsh-autosuggestions@latest",
     "nodejs@22",
