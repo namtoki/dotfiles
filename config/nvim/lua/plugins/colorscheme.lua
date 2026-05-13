@@ -54,25 +54,56 @@ return {
     },
   },
   {
+    "MeanderingProgrammer/render-markdown.nvim",
+    enabled = false,
+  },
+  {
     "OXY2DEV/markview.nvim",
     submodules = false,
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-    opts = {
-      markdown = {
-        headings = {
-          enable = true,
-          heading_1 = { style = "icon", icon = "󰲡 ", hl = "MarkviewHeading1" },
-          heading_2 = { style = "icon", icon = "󰲣 ", hl = "MarkviewHeading2" },
-          heading_3 = { style = "icon", icon = "󰲥 ", hl = "MarkviewHeading3" },
-          heading_4 = { style = "icon", icon = "󰲧 ", hl = "MarkviewHeading4" },
-          heading_5 = { style = "icon", icon = "󰲩 ", hl = "MarkviewHeading5" },
-          heading_6 = { style = "icon", icon = "󰲫 ", hl = "MarkviewHeading6" },
+    config = function()
+      require("markview").setup({
+        markdown = {
+          headings = {
+            enable = true,
+            heading_1 = { style = "icon", icon = "󰲡 ", hl = "MarkviewHeading1" },
+            heading_2 = { style = "icon", icon = "󰲣 ", hl = "MarkviewHeading2" },
+            heading_3 = { style = "icon", icon = "󰲥 ", hl = "MarkviewHeading3" },
+            heading_4 = { style = "icon", icon = "󰲧 ", hl = "MarkviewHeading4" },
+            heading_5 = { style = "icon", icon = "󰲩 ", hl = "MarkviewHeading5" },
+            heading_6 = { style = "icon", icon = "󰲫 ", hl = "MarkviewHeading6" },
+          },
+          checkboxes = {
+            enable = true,
+            checked = { text = "✓", hl = "MarkviewCheckboxChecked", scope_hl = "MarkviewCheckboxChecked" },
+            unchecked = { text = "☐", hl = "MarkviewCheckboxUnchecked", scope_hl = "MarkviewCheckboxUnchecked" },
+            ["~"] = { text = "󰓎", hl = "DiagnosticWarn" },
+          },
+          list_items = {
+            enable = true,
+            indent_size = 2,
+            shift_width = 0,
+            marker_minus = {
+              add_padding = false,
+              conceal_on_checkboxes = true,
+              text = "●",
+              hl = "MarkviewListItemMinus",
+            },
+            marker_plus = {
+              add_padding = false,
+              conceal_on_checkboxes = true,
+              text = "◈",
+              hl = "MarkviewListItemPlus",
+            },
+            marker_star = {
+              add_padding = false,
+              conceal_on_checkboxes = true,
+              text = "◇",
+              hl = "MarkviewListItemStar",
+            },
+          },
         },
-        checkboxes = {
-          enable = true,
-          ["~"] = { text = "󰓎 ", hl = "DiagnosticWarn" },
-        },
-      },
-    },
+      })
+    end,
   },
 }
