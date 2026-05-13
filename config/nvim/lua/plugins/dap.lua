@@ -5,46 +5,18 @@ return {
   {
     "mfussenegger/nvim-dap",
     event = "VeryLazy",
+    dependencies = { "rcarriga/nvim-dap-ui", "nvim-neotest/nvim-nio" },
     keys = {
-      {
-        "<F5>",
-        function()
-          require("dap").continue()
-        end,
-        desc = "Continue",
-      },
-      {
-        "<F8>",
-        function()
-          require("dap").run_last()
-        end,
-        desc = "Run Last",
-      },
-      {
-        "<F10>",
-        function()
-          require("dap").step_over()
-        end,
-        desc = "Step Over",
-      },
-      {
-        "<F11>",
-        function()
-          require("dap").step_into()
-        end,
-        desc = "Step Into",
-      },
-      {
-        "<F12>",
-        function()
-          require("dap").step_out()
-        end,
-        desc = "Step Out",
-      },
+      { "<F5>", function() require("dap").continue() end, desc = "Continue" },
+      { "<F8>", function() require("dap").run_last() end, desc = "Run Last" },
+      { "<F10>", function() require("dap").step_over() end, desc = "Step Over" },
+      { "<F11>", function() require("dap").step_into() end, desc = "Step Into" },
+      { "<F12>", function() require("dap").step_out() end, desc = "Step Out" },
     },
-    opts = function()
+    config = function(_, opts)
       local dap = require("dap")
       local dapui = require("dapui")
+      dapui.setup()
 
       dap.adapters.cppdbg = {
         type = "executable",

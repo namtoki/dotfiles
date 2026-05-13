@@ -32,7 +32,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.editor.telescope" },
     { import = "lazyvim.plugins.extras.ui.treesitter-context" },
     { import = "lazyvim.plugins.extras.ui.mini-indentscope" },
-    { import = "lazyvim.plugins.extras.dap" },
+    -- { import = "lazyvim.plugins.extras.dap" }, -- broken in current LazyVim version; handled by plugins/dap.lua
     -- import/override with your plugins
     { import = "plugins" },
   },

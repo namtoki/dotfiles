@@ -29,23 +29,13 @@ return {
           NeoTreeWinSeparator = { bg = "NONE" },
           NeoTreeStatusLine = { bg = "NONE" },
           NeoTreeStatusLineNC = { bg = "NONE" },
-          -- Markdown heading colors for better visibility
-          RenderMarkdownH1 = { fg = "#ff6e67", bold = true },
-          RenderMarkdownH2 = { fg = "#ffa066", bold = true },
-          RenderMarkdownH3 = { fg = "#e6c384", bold = true },
-          RenderMarkdownH4 = { fg = "#9ece6a", bold = true },
-          RenderMarkdownH5 = { fg = "#7dcfff", bold = true },
-          RenderMarkdownH6 = { fg = "#bb9af7", bold = true },
-          RenderMarkdownH1Bg = { bg = "NONE" },
-          RenderMarkdownH2Bg = { bg = "NONE" },
-          RenderMarkdownH3Bg = { bg = "NONE" },
-          RenderMarkdownH4Bg = { bg = "NONE" },
-          RenderMarkdownH5Bg = { bg = "NONE" },
-          RenderMarkdownH6Bg = { bg = "NONE" },
-          -- Markdown inline highlight (yellow marker)
-          RenderMarkdownInlineHighlight = { bg = "#ffff00", fg = "#000000", bold = true },
-          -- Markdown inline highlight (red marker)
-          RenderMarkdownInlineHighlightRed = { bg = "#ff6b6b", fg = "#000000", bold = true },
+          -- Markdown heading colors for markview.nvim
+          MarkviewHeading1 = { fg = "#ff6e67", bold = true },
+          MarkviewHeading2 = { fg = "#ffa066", bold = true },
+          MarkviewHeading3 = { fg = "#e6c384", bold = true },
+          MarkviewHeading4 = { fg = "#9ece6a", bold = true },
+          MarkviewHeading5 = { fg = "#7dcfff", bold = true },
+          MarkviewHeading6 = { fg = "#bb9af7", bold = true },
         }
       end,
       theme = "wave",
@@ -64,50 +54,23 @@ return {
     },
   },
   {
-    "MeanderingProgrammer/render-markdown.nvim",
-    -- dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
-    ---@module 'render-markdown'
-    ---@type render.md.UserConfig
+    "OXY2DEV/markview.nvim",
+    submodules = false,
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
     opts = {
-      checkbox = {
-        custom = {
-          important = { raw = "[~]", rendered = "󰓎 ", highlight = "DiagnosticWarn" },
+      markdown = {
+        headings = {
+          enable = true,
+          heading_1 = { style = "icon", icon = "󰲡 ", hl = "MarkviewHeading1" },
+          heading_2 = { style = "icon", icon = "󰲣 ", hl = "MarkviewHeading2" },
+          heading_3 = { style = "icon", icon = "󰲥 ", hl = "MarkviewHeading3" },
+          heading_4 = { style = "icon", icon = "󰲧 ", hl = "MarkviewHeading4" },
+          heading_5 = { style = "icon", icon = "󰲩 ", hl = "MarkviewHeading5" },
+          heading_6 = { style = "icon", icon = "󰲫 ", hl = "MarkviewHeading6" },
         },
-      },
-      inline_highlight = {
-        enabled = true,
-        -- Markdown highlight syntax: ==text== (yellow), ==!text== (red)
-        highlight = "RenderMarkdownInlineHighlight",
-        custom = {
-          red = { prefix = "!", highlight = "RenderMarkdownInlineHighlightRed" },
-        },
-      },
-      heading = {
-        enabled = true,
-        sign = true,
-        position = "inline",
-        icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
-        signs = { "󰫎 " },
-        width = "full",
-        left_margin = 0,
-        left_pad = 0,
-        right_pad = 0,
-        min_width = 0,
-        border = false,
-        border_virtual = false,
-        border_prefix = false,
-        above = "▄",
-        below = "▀",
-        backgrounds = {},
-        foregrounds = {
-          "RenderMarkdownH1",
-          "RenderMarkdownH2",
-          "RenderMarkdownH3",
-          "RenderMarkdownH4",
-          "RenderMarkdownH5",
-          "RenderMarkdownH6",
+        checkboxes = {
+          enable = true,
+          ["~"] = { text = "󰓎 ", hl = "DiagnosticWarn" },
         },
       },
     },

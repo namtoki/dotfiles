@@ -22,7 +22,10 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
   callback = function()
-    require("dap")
+    local ok, _ = pcall(require, "dap")
+    if not ok then
+      return
+    end
     vim.api.nvim_set_hl(0, "goldenrod", { bg = "#daa520" })
     local sign = vim.fn.sign_define
     sign("DapStopped", { text = "▶", texthl = "", linehl = "goldenrod", numhl = "goldenrod" })
