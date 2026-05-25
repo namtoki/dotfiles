@@ -29,6 +29,9 @@ return {
           NeoTreeWinSeparator = { bg = "NONE" },
           NeoTreeStatusLine = { bg = "NONE" },
           NeoTreeStatusLineNC = { bg = "NONE" },
+          -- Markdown code block background transparent for markview.nvim
+          MarkviewCode = { bg = "NONE" },
+          MarkviewInlineCode = { bg = "NONE" },
           -- Markdown heading colors for markview.nvim
           MarkviewHeading1 = { fg = "#ff6e67", bold = true },
           MarkviewHeading2 = { fg = "#ffa066", bold = true },
@@ -63,6 +66,16 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
     config = function()
       require("markview").setup({
+        markdown_inline = {
+          highlights = {
+            enable = true,
+            default = {
+              padding_left = " ",
+              padding_right = " ",
+              hl = "MarkviewHighlightMagenta",
+            },
+          },
+        },
         markdown = {
           headings = {
             enable = true,
@@ -107,6 +120,19 @@ return {
             },
           },
         },
+      })
+
+      -- markview regenerates MarkviewCode on VimEnter/ColorScheme events,
+      -- overriding kanagawa's overrides. Register our autocmd after markview's
+      -- so it fires last and wins.
+      local function fix_code_hl()
+        vim.api.nvim_set_hl(0, "MarkviewCode", { bg = "NONE" })
+        vim.api.nvim_set_hl(0, "MarkviewInlineCode", { bg = "NONE" })
+        vim.api.nvim_set_hl(0, "MarkviewHighlightMagenta", { fg = "#FF00FF", bg = "NONE" })
+      end
+      fix_code_hl()
+      vim.api.nvim_create_autocmd({ "VimEnter", "ColorScheme" }, {
+        callback = fix_code_hl,
       })
     end,
   },
