@@ -129,6 +129,8 @@ return {
         vim.api.nvim_set_hl(0, "MarkviewCode", { bg = "NONE" })
         vim.api.nvim_set_hl(0, "MarkviewInlineCode", { bg = "NONE" })
         vim.api.nvim_set_hl(0, "MarkviewHighlightMagenta", { fg = "#FF00FF", bg = "NONE" })
+        vim.api.nvim_set_hl(0, "@markup.raw", { fg = "#7DCFFF" })
+        vim.api.nvim_set_hl(0, "@markup.raw.block", { fg = "#7DCFFF" })
       end
       fix_code_hl()
       vim.api.nvim_create_autocmd({ "VimEnter", "ColorScheme" }, {
