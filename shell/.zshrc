@@ -85,6 +85,13 @@ if [[ -z "${TMUX}" ]]; then
     fi
 fi
 
+export PATH="$HOME/.local/bin:$PATH"
+
+# ============================================
+# tfenv (Terraform version manager)
+# ============================================
+export PATH="$HOME/.tfenv/bin:$PATH"
+
 # ============================================
 # Local Settings (secrets, machine-specific)
 # ============================================

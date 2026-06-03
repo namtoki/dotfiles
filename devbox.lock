@@ -1014,6 +1014,54 @@
         }
       }
     },
+    "tfenv@latest": {
+      "last_modified": "2026-05-25T07:42:19Z",
+      "resolved": "github:NixOS/nixpkgs/f9d8b65950353691ab56561e7c73d2e1063d810b#tfenv",
+      "source": "devbox-search",
+      "version": "3.2.2",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/0zgq0mgld8fnn57r7zkdw5g6cjz299mm-tfenv-3.2.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/0zgq0mgld8fnn57r7zkdw5g6cjz299mm-tfenv-3.2.2"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/y0aavqg4afy4yd2jgc3q3s55n3p8p6ww-tfenv-3.2.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/y0aavqg4afy4yd2jgc3q3s55n3p8p6ww-tfenv-3.2.2"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/ibp56hrkh8237523c7nwdakf57j1yqhb-tfenv-3.2.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/ibp56hrkh8237523c7nwdakf57j1yqhb-tfenv-3.2.2"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/6mfqvl1hzaysdmp7pdjldsbhr12k44p0-tfenv-3.2.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/6mfqvl1hzaysdmp7pdjldsbhr12k44p0-tfenv-3.2.2"
+        }
+      }
+    },
     "tmux@latest": {
       "last_modified": "2025-11-26T14:39:26Z",
       "resolved": "github:NixOS/nixpkgs/5c46f3bd98147c8d82366df95bbef2cab3a967ea#tmux",
