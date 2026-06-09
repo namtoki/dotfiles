@@ -22,7 +22,8 @@
     "zsh-autosuggestions@latest",
     "nodejs@22",
     "uv@latest",
-    "tfenv@latest"
+    "tfenv@latest",
+    "awscli2@latest"
   ],
   "shell": {
     "init_hook": [
