@@ -85,10 +85,7 @@ return {
             heading_4 = { style = "icon", icon = "󰲧 ", hl = "MarkviewHeading4" },
             heading_5 = { style = "icon", icon = "󰲩 ", hl = "MarkviewHeading5" },
             heading_6 = { style = "icon", icon = "󰲫 ", hl = "MarkviewHeading6" },
-            org_indent = true,
-            org_indent_wrap = true,
-            org_shift_char = " ",
-            org_shift_width = 2,
+            org_indent = false,
           },
           checkboxes = {
             enable = true,
