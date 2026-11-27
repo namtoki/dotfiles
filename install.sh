@@ -103,13 +103,27 @@ create_symlink "$DOTFILES_DIR/devbox.lock" "$DEVBOX_GLOBAL_DIR/devbox.lock"
 # ============================================
 info "Installing CLI tools..."
 
-# Colima
-if command -v colima &>/dev/null; then
-    success "colima already installed, skipping"
+# Docker (Docker Desktop is not used because it requires a paid license)
+if [[ "$(uname -s)" == "Linux" ]]; then
+    # Linux/WSL: Docker Engine from apt
+    if command -v docker &>/dev/null; then
+        success "docker already installed, skipping"
+    elif command -v apt-get &>/dev/null; then
+        info "Installing Docker Engine..."
+        sudo apt-get update
+        sudo apt-get install -y docker.io docker-compose-v2 docker-buildx
+        sudo usermod -aG docker "$USER"
+        success "Docker installed (re-login required for the docker group)"
+    else
+        warn "apt-get not found — skipping Docker install"
+    fi
 else
-    if command -v brew &>/dev/null; then
-        info "Installing Colima..."
-        brew install colima
+    # macOS: Colima + docker CLI
+    if command -v colima &>/dev/null; then
+        success "colima already installed, skipping"
+    elif command -v brew &>/dev/null; then
+        info "Installing Colima and docker CLI..."
+        brew install colima docker docker-compose
         success "Colima installed"
     else
         warn "Homebrew not found — skipping Colima install"
@@ -129,4 +143,4 @@ info "Next steps:"
 echo "  1. Run 'devbox global install' to install packages"
 echo "  2. Restart your shell or run: source ~/.zshrc"
 echo "  3. Copy shell/.zshrc.local.example to ~/.zshrc.local and add your secrets"
-echo "  4. Start Colima with: colima start"
+echo "  4. macOS: start Colima with 'colima start' / Linux(WSL): re-login, then 'sudo service docker start'"
