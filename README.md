@@ -10,7 +10,7 @@ This configuration assumes the following tool stack:
 - **ghq** - Repository management (`~/ghq/github.com/...` structure)
 - **tmux** - Terminal multiplexer
 - **Neovim** - Text editor (LazyVim based)
-- **Claude Code** - AI coding assistant CLI
+- **GitHub Copilot CLI** - AI coding assistant CLI (`copilot`, installed via npm in devbox init hook)
 
 > **Note:** This dotfiles configuration is designed for zsh. Make sure zsh is your default shell before proceeding.
 
