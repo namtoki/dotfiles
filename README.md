@@ -64,6 +64,21 @@ vim ~/.zshrc.local
 
 `.zshrc.local` is included in `.gitignore` and will not be committed to Git.
 
+### Alacritty on Windows (WSL)
+
+When using Alacritty on Windows with these dotfiles installed inside WSL, Alacritty reads its config from the Windows side (`%APPDATA%\alacritty\alacritty.toml`), not from `~/.config/alacritty` in WSL. After installation, copy the config to the Windows side:
+
+```bash
+# Run inside WSL
+WIN_APPDATA="$(wslpath "$(cmd.exe /c 'echo %APPDATA%' 2>/dev/null | tr -d '\r')")"
+mkdir -p "$WIN_APPDATA/alacritty"
+cp ~/ghq/github.com/namtoki/dotfiles/config/alacritty/alacritty.toml "$WIN_APPDATA/alacritty/alacritty.toml"
+```
+
+Windows apps cannot follow WSL symlinks, so this is a copy rather than a link. Re-run the `cp` command whenever you change `alacritty.toml`.
+
+The config uses **FiraCode Nerd Font**, which must be installed on Windows (the bootstrap script installs it only inside WSL). Download it from [Nerd Fonts](https://www.nerdfonts.com/font-downloads) and install it on Windows.
+
 ## Customization
 
 ### Adding Packages
