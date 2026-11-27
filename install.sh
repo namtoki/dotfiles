@@ -98,15 +98,6 @@ create_symlink "$DOTFILES_DIR/devbox.lock" "$DEVBOX_GLOBAL_DIR/devbox.lock"
 # ============================================
 info "Installing CLI tools..."
 
-# Claude Code
-if command -v claude &>/dev/null; then
-    success "claude already installed, skipping"
-else
-    info "Installing Claude Code..."
-    curl -fsSL https://claude.ai/install.sh | bash
-    success "Claude Code installed"
-fi
-
 # Colima
 if command -v colima &>/dev/null; then
     success "colima already installed, skipping"
