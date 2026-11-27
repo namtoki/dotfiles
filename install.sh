@@ -62,6 +62,21 @@ create_symlink "$DOTFILES_DIR/config/nvim" "$HOME/.config/nvim"
 # tmux
 create_symlink "$DOTFILES_DIR/config/tmux" "$HOME/.config/tmux"
 
+# tmux plugins (tpm)
+TPM_DIR="$HOME/.config/tmux/plugins/tpm"
+if [[ ! -f "$TPM_DIR/tpm" ]]; then
+    if command -v git &>/dev/null; then
+        info "Installing tpm..."
+        rm -rf "$TPM_DIR"
+        git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
+    else
+        warn "git not found — skipping tpm install"
+    fi
+fi
+if [[ -x "$TPM_DIR/bin/install_plugins" ]] && command -v tmux &>/dev/null; then
+    "$TPM_DIR/bin/install_plugins"
+fi
+
 # Alacritty
 create_symlink "$DOTFILES_DIR/config/alacritty" "$HOME/.config/alacritty"
 
