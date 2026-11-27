@@ -75,17 +75,7 @@ create_symlink "$DOTFILES_DIR/config/starship.toml" "$HOME/.config/starship.toml
 create_symlink "$DOTFILES_DIR/config/yazi" "$HOME/.config/yazi"
 
 # ============================================
-# 3. Claude Code configuration (~/.claude)
-# ============================================
-info "Installing Claude Code config..."
-mkdir -p "$HOME/.claude"
-create_symlink "$DOTFILES_DIR/claude/settings.json" "$HOME/.claude/settings.json"
-create_symlink "$DOTFILES_DIR/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
-create_symlink "$DOTFILES_DIR/claude/statusline.js" "$HOME/.claude/statusline.js"
-chmod +x "$DOTFILES_DIR/claude/statusline.js"
-
-# ============================================
-# 4. Devbox Global configuration
+# 3. Devbox Global configuration
 # ============================================
 info "Syncing Devbox global configuration..."
 DEVBOX_GLOBAL_DIR="$HOME/.local/share/devbox/global/default"
@@ -94,7 +84,7 @@ create_symlink "$DOTFILES_DIR/devbox.json" "$DEVBOX_GLOBAL_DIR/devbox.json"
 create_symlink "$DOTFILES_DIR/devbox.lock" "$DEVBOX_GLOBAL_DIR/devbox.lock"
 
 # ============================================
-# 5. CLI installations (without devbox)
+# 4. CLI installations (without devbox)
 # ============================================
 info "Installing CLI tools..."
 
